@@ -35,8 +35,6 @@ d3.csv("data/Coffee_Data.csv", function(datas) {
               .attr("preserveAspectRatio", "xMinYMin meet")
               .attr("viewBox", "0 0 " + raw_width + " " + raw_height)
               .classed("svg-content-responsive", true)
-              .attr("width", raw_width)
-              .attr("height", raw_height)
               .append("g")
               .attr('transform', 'translate(' + margin.left/2 + ', ' + margin.top/2 + ')');;
   mindate = format.parse(datas[0]['Date']+ ' 0:00 AM');
@@ -83,7 +81,7 @@ d3.csv("data/Coffee_Data.csv", function(datas) {
      .attr("cy", function(d) {
         return yScale(d.quantity);
       })
-      .attr("r", 10)
+      .attr("r", 7)
       .on("mouseover", function(d) {
         div.transition()
            .duration(200)

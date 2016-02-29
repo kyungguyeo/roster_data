@@ -1,0 +1,87 @@
+body {
+    margin: 35px;
+}
+.container {
+	text-align: center;
+}
+.axis path,
+.axis line {
+    fill: none;
+    stroke: black;
+    shape-rendering: crispEdges;
+}
+
+.axis text {
+    font-family: sans-serif;
+    font-size: 14px;
+}
+svg {
+	display: block;
+	margin: auto;
+}
+
+.the_viz {
+	text-align: center;
+    height: 100%;
+    width: 100%;
+}
+
+div.tooltip {	
+    position: absolute;			
+    text-align: center;			
+    padding: 8px;				
+    font: 10px Tahoma;
+    pointer-events: none;			
+}
+
+
+.waterline { 
+    stroke: steelblue;
+    stroke-width: 4;
+    fill: none;
+}
+
+.coffeeline { 
+    stroke: brown;
+    stroke-width: 4;
+    fill: none;
+}
+
+.xaxis path,
+.xaxis line {
+    fill: none;
+    stroke: grey;
+    stroke-width: 4;
+    shape-rendering: crispEdges;
+}
+
+.xaxis text {
+    font-size: 42px;
+}
+
+.yaxis path,
+.yaxis line {
+    fill: none;
+    stroke: grey;
+    stroke-width: 4;
+    shape-rendering: crispEdges;
+}
+
+.yaxis text {
+    font-size: 48px;
+}
+
+.svg-container {
+    display: inline-block;
+    position: relative;
+    width: 100%;
+    padding-bottom: 100%; /* aspect ratio */
+    vertical-align: top;
+    overflow: hidden;
+}
+.svg-content-responsive {
+    display: inline-block;
+    position: absolute;
+    top: 10px;
+    left: 0;
+}

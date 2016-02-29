@@ -4,21 +4,6 @@ body {
 .container {
 	text-align: center;
 }
-.axis path,
-.axis line {
-    fill: none;
-    stroke: black;
-    shape-rendering: crispEdges;
-}
-
-.axis text {
-    font-family: sans-serif;
-    font-size: 14px;
-}
-svg {
-	display: block;
-	margin: auto;
-}
 
 .the_viz {
 	text-align: center;
@@ -56,7 +41,7 @@ div.tooltip {
 }
 
 .xaxis text {
-    font-size: 42px;
+    font-size: 14px;
 }
 
 .yaxis path,
@@ -68,7 +53,7 @@ div.tooltip {
 }
 
 .yaxis text {
-    font-size: 48px;
+    font-size: 14px;
 }
 
 .svg-container {

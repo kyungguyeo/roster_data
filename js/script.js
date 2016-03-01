@@ -1,6 +1,4 @@
 $(document).ready(function() {
-	$('tr').hide();
-	$('#the_head').show();
 	$('#waterbutton').click(function() {
 		$('.waterdata').toggle();
 		$('.waterline').toggle();
@@ -16,6 +14,6 @@ $(document).ready(function() {
 		$('.waterline').show();
 	});
 	$('#tabledatabutton').click(function() {
-		$("tr:not(:first-child)").toggle();
+		$("tbody").children().toggle();
 	})
 })

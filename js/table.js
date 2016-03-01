@@ -28,4 +28,5 @@ d3.csv("data/Coffee_Data.csv", function(datas) {
 		        .attr("id", i + '_tabledata')
 		    );
 		};
+	$("tbody").children().hide();
 });

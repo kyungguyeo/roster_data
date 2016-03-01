@@ -13,21 +13,25 @@ body {
 
 div.tooltip {	
     position: absolute;			
-    text-align: center;			
-    padding: 8px;				
+    text-align: center;	
+    top: 50%;
     font: 10px Tahoma;
-    pointer-events: none;			
+    pointer-events: none;
+    height: 80px;
+    width: 80px;
+    border-radius: 10%;	
+    color: white;
 }
 
 
 .waterline { 
-    stroke: steelblue;
+    stroke: #0095FF;
     stroke-width: 4;
     fill: none;
 }
 
 .coffeeline { 
-    stroke: brown;
+    stroke: #FF9740;
     stroke-width: 4;
     fill: none;
 }
@@ -36,7 +40,7 @@ div.tooltip {
 .xaxis line {
     fill: none;
     stroke: grey;
-    stroke-width: 4;
+    stroke-width: 1;
     shape-rendering: crispEdges;
 }
 
@@ -48,7 +52,7 @@ div.tooltip {
 .yaxis line {
     fill: none;
     stroke: grey;
-    stroke-width: 4;
+    stroke-width: 1;
     shape-rendering: crispEdges;
 }
 

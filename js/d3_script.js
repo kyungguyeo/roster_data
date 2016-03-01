@@ -81,15 +81,6 @@ d3.csv("data/Coffee_Data.csv", function(datas) {
      .attr("cy", function(d) {
         return yScale(d.quantity);
       })
-      .attr("r", 7)
-      .on("mouseover", function(d) {
-        div.transition()
-           .duration(200)
-           .style("opacity",1);
-        div.html(d.name + ', ' + d.quantity + ', ' + d.date)
-           .style("left",(d3.event.pageX-60)+"px")
-           .style("top",(d3.event.pageY-50)+"px");
-      })
       .attr("class", function(d) {
         if (d.name==='Water') {
           return 'waterdata';
@@ -98,17 +89,58 @@ d3.csv("data/Coffee_Data.csv", function(datas) {
           return 'coffeedata';
         }
       })
+      .attr("r", 7)
+      .attr("id", function(d,i) {
+        return i;
+      })
+      .on("mouseover", function(d) {
+        div.transition()
+           .duration(200)
+           .style("opacity",1)
+           .style('background', function() {
+            if (d.name === 'Water') {
+            return '#0068B2';
+            }
+            else {
+              return '#B26A00';
+            }
+           });
+        d3.select(this).style("fill",function() {
+          if (d.name === 'Water') {
+            return '#0068B2';
+          }
+          else {
+            return '#B26A00';
+          }
+        });
+        div.html(d.name + '<br>' + d.date )
+           .style("left",(d3.event.pageX-10)+"px")
+           .style("top",(d3.event.pageY+10)+"px");
+      })
       .on("mouseout", function(d) {
         div.transition()
            .duration(500)
            .style("opacity",0);
+        d3.select(this).style("fill",function() {
+          if (d.name === 'Water') {
+            return '#76C6FF';
+          }
+          else {
+            return '#FFAF3B';
+          }
+        });
+      })
+      .on("click", function(d) {
+        $('tr').hide();
+        $('#the_head').show();
+        $('#' + d3.select(this).attr('id') + '_tabledata').show();
       })
       .style("fill", function(d) { 
         if (d.name === 'Water') {
-          return '76C6FF';
+          return '#76C6FF';
         } 
         else {
-          return 'FFAF3B';
+          return '#FFAF3B';
         }
       });
 

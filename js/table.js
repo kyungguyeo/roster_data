@@ -10,13 +10,13 @@ d3.csv("data/Coffee_Data.csv", function(datas) {
 			data.quantity.push(datas[i]['Quantity (cups)']);
 			data.time_of_day.push(datas[i]['Time']);
 		}
-		console.log(data.name.length);
 		$('.table').find('thead')
 			.append($('<tr>')
 				.append($('<th>').text('Type of Coffee'))
 				.append($('<th>').text('Date'))
 				.append($('<th>').text('Quantity (cups)'))
 				.append($('<th>').text('Time'))
+				.attr("id", 'the_head')
 				);
 		for (i=0; i<data.name.length; i++) {
 		$(".table").find('tbody')
@@ -25,6 +25,7 @@ d3.csv("data/Coffee_Data.csv", function(datas) {
 		        .append($('<td>').text(data.date[i]))
 		        .append($('<td>').text(data.quantity[i]))
 		        .append($('<td>').text(data.time_of_day[i]))
+		        .attr("id", i + '_tabledata')
 		    );
 		};
 });

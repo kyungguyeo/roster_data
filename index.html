@@ -1,43 +1,30 @@
-
-
 <html>
 <head>
-	<title>My Coffee/Water Drinking Habits</title>
-	<link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.2/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-y3tfxAZXuh4HwSYylfB+J125MxIs6mR5FOHamPBG064zB+AFeWH94NdvaCBm8qnd" crossorigin="anonymous">
-	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
-	<link rel="stylesheet" type="text/css" href="css/style.css">
-	<link rel="stylesheet" type="text/css" href="css/heart.css">
-	<link rel='icon' href='/favicon.ico'>
+	<title>Leaflet Assignment</title>
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/0.7.7/leaflet.css">
 </head>
 <body>
-	<div style="text-align:center">
-		<h3 style="font-size:28px">Number of Cups Drank</h3>
-		<em>A week-long log of all the water and coffee I drank (2/8/16-2/16/16)</em>
-	</div>
-	<div class="the_viz"></div>
-	<div class="container">
-		<h3>Click Button to Toggle Data</h3>
-		<div class='btn-group'>
-			<button class='btn btn-info' id="waterbutton"><i class="fa fa-tint"></i> Water</button>
-			<button class='btn btn-warning' id="coffeebutton"><i class="fa fa-coffee fa-lg"></i> Coffee</button>
-			<button class='btn btn-secondary' id="bothbutton">Both</button>
-		</div>
-	</div>
-	<div>
-		<p><h2>The Data</h2><em>Click a datapoint to see its details in table form.</em></p>
-		<button class='btn btn-primary' id='tabledatabutton'>Show/hide all data</button>
-		<table class="table">
-			<thead></thead>
-			<tbody></tbody>
-		</table>
-	</div>
-	<!--<div class="heart heart1"></div>
-	<div class="heart heart2"></div>-->
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-csv/0.71/jquery.csv-0.71.min.js"></script>
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.15/d3.js"></script>
-	<script type="text/javascript" src="js/d3_script.js"></script>
-	<script type="text/javascript" src="js/table.js"></script>
-	<script type="text/javascript" src="js/script.js"></script>
+	<div id="mymap" style="height: 500px;"></div>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.2/jquery.min.js"></script>
+	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/0.7.7/leaflet.js"></script>
+	<script type="text/javascript">
+		var themap = L.map('mymap').setView([37.77, -122.42], 13);
+		L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token={accessToken}', {
+			attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors',
+			id: 'mapbox.run-bike-hike',
+			accessToken: 'pk.eyJ1Ijoia3l1bmdndXllbyIsImEiOiJjaWxrYjN1dHI1a2RsdmVtMGIxdDM2MmhvIn0.14A26e-K5xhNSrZ0HByTZg',
+		}).addTo(themap);
+		var parking_data
+		var bikeIcon = L.icon({
+		    iconUrl: 'transport.png',
+		    iconSize:     [15, 15], // size of the icon		  
+		});
+		$.getJSON("bike_parking_data.json", function(json) {
+		    parking_data = json;
+		    for (i=0; i<parking_data.length; i++) {
+				marker = new L.marker(parking_data[i].geometry.coordinates, {icon: bikeIcon}).addTo(themap);
+			}
+		});
+	</script>
 </body>
 </html>
